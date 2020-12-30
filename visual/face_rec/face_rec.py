@@ -49,9 +49,7 @@ def record(num):
     wf.writeframes(b''.join(frames))
     wf.close()
 
-def play(num):
-
-    filename = f"audios/{num}.wav"
+def play(filename):
 
     # Set chunk size of 1024 samples per data frame
     chunk = 1024  
@@ -118,6 +116,7 @@ def unknown_image_encoded(img):
     return encoding
 
 def test_pic():
+    play('take_pic.wav')
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
     cv2.imwrite('test.jpg', frame)
@@ -126,7 +125,9 @@ def test_pic():
 
 def save_pic(num):
     print("Please pronounce name of person")
+    play('take_recording.wav')
     record(num)
+    play('take_pic.wav')
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
     cv2.imwrite(f"faces/{num}.jpg", frame)
@@ -190,14 +191,15 @@ choice = input()
 if choice == '1':
     num = count_num_faces()
     save_pic(num)
-    print("face saved")
+    play("person_saved.wav")
 elif choice == '2':
     face_names = classify_face("test.jpg")
     print(face_names)
+    play("speak.wav")
     for f in face_names:
         if f == "Unknown":
             continue
         else:
-            play(f)
+            play(f"audios/{f}.wav")
 
 

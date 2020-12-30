@@ -6,7 +6,7 @@ sample_format = pyaudio.paInt16  # 16 bits per sample
 channels = 2
 fs = 44100  # Record at 44100 samples per second
 seconds = 3
-filename = "output.wav"
+filename = "speak.wav"
 
 p = pyaudio.PyAudio()  # Create an interface to PortAudio
 
@@ -41,7 +41,7 @@ wf.setframerate(fs)
 wf.writeframes(b''.join(frames))
 wf.close()
 
-filename = 'output.wav'
+filename = 'speak.wav'
 
 # Set chunk size of 1024 samples per data frame
 chunk = 1024  
