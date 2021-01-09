@@ -9,5 +9,5 @@ This project's features include:
 2) Recognising friends and families for them
 3) Helping them to read notice and directories
 
-The main code is in visual file.
+The main code is in 'visual' folder.
 
